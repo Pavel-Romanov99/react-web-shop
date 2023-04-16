@@ -1,0 +1,13 @@
+.supplement-items {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.supplements-container {
+  width: 70%;
+}
+
+.item {
+  min-width: 50px;
+}

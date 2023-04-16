@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.button-link {
+  text-decoration: none;
+  color: white;
+}
