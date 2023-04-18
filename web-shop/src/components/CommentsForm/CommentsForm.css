@@ -1,0 +1,12 @@
+.comments-form {
+  margin-bottom: 3%;
+}
+
+.comment-label {
+  display: flex;
+  align-items: flex-start;
+}
+
+#comments-input {
+  height: 100px;
+}

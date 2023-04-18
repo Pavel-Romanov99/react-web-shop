@@ -1,6 +1,6 @@
-const baseUrl = "http://localhost:3030/jsonstore/supplements";
+const baseUrl = "http://localhost:3030/jsonstore/comments";
 
-export const getSupplements = async () => {
+export const getAllComments = async () => {
   const response = await fetch(baseUrl);
 
   const result = await response.json();
@@ -8,7 +8,7 @@ export const getSupplements = async () => {
   return Object.values(result);
 };
 
-export const addSupplement = async (data) => {
+export const addComment = async (data) => {
   const response = await fetch(baseUrl, {
     method: "POST",
     body: JSON.stringify(data),
@@ -20,4 +20,10 @@ export const addSupplement = async (data) => {
   const result = await response.json();
 
   return result;
+};
+
+export const deleteComment = async (id) => {
+  await fetch(`${baseUrl}/${id}`, {
+    method: "DELETE",
+  });
 };

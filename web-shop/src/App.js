@@ -2,27 +2,32 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/Navigation/Navigation";
 import Homepage from "./components/Homepage/Homepage";
 import ClothingForm from "./components/ClothingForm/ClothingForm";
-import SupplementPage from "./components/SupplementPage/SupplementPage";
+import ClothingPage from "./components/ClothingPage/ClothingPage";
+import ClothingDetails from "./components/ClothingDetails/ClothingDetails";
+import LoginPage from "./components/LoginPage/LoginPage";
+import RegisterPage from "./components/RegisterPage/RegisterPage";
 
-import * as supplementService from "./services/supplementService";
+import * as clothingService from "./services/clothingService";
+import Footer from "./components/Footer/Footer";
 
 function App() {
-  const [supplements, setSupplements] = useState([]);
+  const [clothing, setClothing] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    supplementService.getSupplements().then((res) => setSupplements(res));
+    clothingService.getClothing().then((res) => setClothing(res));
   }, []);
 
   const onSupplementsSubmitClick = async (data) => {
-    const result = await supplementService.addSupplement(data);
+    const result = await clothingService.addClothing(data);
 
-    setSupplements((current) => [...current, result]);
+    setClothing((current) => [...current, result]);
 
-    navigate("/supplements");
+    navigate("/clothing");
   };
 
   return (
@@ -33,23 +38,29 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage></Homepage>}></Route>
           <Route
-            path="/supplements"
-            element={
-              <SupplementPage supplements={supplements}></SupplementPage>
-            }
+            path="/clothing"
+            element={<ClothingPage clothing={clothing}></ClothingPage>}
           ></Route>
-          <Route path="/clothing"></Route>
           <Route
-            path="/create/supplement"
+            path="/clothing/:id"
+            element={<ClothingDetails></ClothingDetails>}
+          ></Route>
+          <Route
+            path="/create/clothing"
             element={
               <ClothingForm
                 onSupplementsSubmitClick={onSupplementsSubmitClick}
               />
             }
           ></Route>
-          <Route path="/create/clothing"></Route>
+          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+          <Route
+            path="/register"
+            element={<RegisterPage></RegisterPage>}
+          ></Route>
         </Routes>
       </div>
+      <Footer className="footer" />
     </div>
   );
 }

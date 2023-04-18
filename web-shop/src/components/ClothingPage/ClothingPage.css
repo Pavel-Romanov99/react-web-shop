@@ -1,0 +1,33 @@
+.clothing-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.clothing-container {
+  width: 70%;
+}
+
+.item {
+  flex-basis: 25%;
+}
+
+select {
+  margin-right: 5px;
+}
+
+.details {
+  margin-top: 10px;
+  border-radius: 0px;
+}
+
+.details:hover {
+  background-color: white;
+  color: blue;
+}
+
+.item-info {
+  margin: 8px;
+}

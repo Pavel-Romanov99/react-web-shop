@@ -8,6 +8,7 @@ export default function ClothingForm({ onSupplementsSubmitClick }) {
       title: "",
       imgUrl: "",
       description: "",
+      price: "",
     },
     onSupplementsSubmitClick
   );
@@ -19,13 +20,22 @@ export default function ClothingForm({ onSupplementsSubmitClick }) {
         <input
           type="text"
           className="form-control"
-          placeholder="clothing name"
+          placeholder="Clothing name"
           name="title"
           value={values.title}
           onChange={onChange}
         />
       </div>
-
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Price"
+          name="price"
+          value={values.price}
+          onChange={onChange}
+        />
+      </div>
       <div className="form-group">
         <input
           type="text"
@@ -41,7 +51,7 @@ export default function ClothingForm({ onSupplementsSubmitClick }) {
         <textarea
           className="form-control"
           rows="3"
-          placeholder="decription"
+          placeholder="Decription"
           name="description"
           value={values.description}
           onChange={onChange}

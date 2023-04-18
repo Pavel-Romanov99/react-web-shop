@@ -1,0 +1,43 @@
+.register-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 5%;
+}
+
+.register-image-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  margin-right: 4%;
+}
+
+.register-image-container img {
+  width: 80%;
+  padding-left: 100px;
+}
+
+.register-form-container {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  height: 400px;
+  margin-left: 4%;
+}
+
+.register-form-container form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-button {
+  background-color: #6c63ff;
+  margin-top: 15px;
+}
+
+.form-group {
+  margin-top: 15px;
+}

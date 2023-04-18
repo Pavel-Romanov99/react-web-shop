@@ -1,0 +1,15 @@
+.item-main-container {
+  width: 90%;
+}
+
+.comments-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clothing-item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
