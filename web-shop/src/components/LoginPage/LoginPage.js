@@ -1,7 +1,9 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
-import image from "./resources/login.svg";
 import "./LoginPage.css";
+import image from "./resources/login.svg";
+
 import { AuthContext } from "../../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
 
@@ -53,7 +55,10 @@ export default function LoginPage() {
               {errorMessage}
             </div>
           )}
-          <button type="submit" className="btn btn-primary login-button">
+          <p>
+            Don't have a profile? Register <Link to={"/register"}>here</Link>
+          </p>
+          <button type="submit" className="btn btn-dark">
             Submit
           </button>
         </form>

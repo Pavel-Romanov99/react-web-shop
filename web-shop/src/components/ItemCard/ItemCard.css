@@ -1,45 +1,40 @@
-.card {
+.clothing-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin-right: 2%;
-  width: 25%;
-  margin-bottom: 3%;
-  height: 50vh;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+  height: 550px;
 }
 
-.image-container {
+.clothing-card__image {
   width: 100%;
-  height: 70%;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
 }
 
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.clothing-card__details {
+  padding: 16px;
 }
 
-.cart-container {
-  display: flex;
-  flex-direction: row;
-  width: 70%;
+.clothing-card__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.cart-container button {
-  color: white;
-}
-
-.price {
+.clothing-card__price {
+  margin: 0;
+  font-size: 16px;
   color: red;
 }
 
-.btn-link {
-  background-color: #6c63ff;
-  text-decoration: none;
-}
-
-.btn-link:hover {
-  border: 1px solid black;
-  color: black;
+.cart-form {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
 }

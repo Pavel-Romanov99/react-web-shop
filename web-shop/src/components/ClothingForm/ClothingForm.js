@@ -14,7 +14,7 @@ export default function ClothingForm({ onSupplementsSubmitClick }) {
   );
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="clothing-form-container">
       <h1>Create a new piece of clothing</h1>
       <div className="form-group">
         <input

@@ -14,10 +14,14 @@ import { AuthContext } from "./context/AuthContext";
 
 import * as authService from "./services/authService";
 import * as clothingService from "./services/clothingService";
+import * as cartService from "./services/cartService";
+
 import Footer from "./components/Footer/Footer";
+import CartComponent from "./components/CartComponent/CartComponent";
 
 function App() {
   const [clothing, setClothing] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [user, setUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -43,6 +47,12 @@ function App() {
     navigate("/clothing");
   };
 
+  const onClothingDeleteClick = async (id) => {
+    const result = await clothingService.deleteClothingById(id);
+
+    setClothing((current) => current.filter((x) => x._id !== result._id));
+  };
+
   const onLoginSubmit = async (data) => {
     const result = await authService.login(data);
 
@@ -57,6 +67,13 @@ function App() {
   };
 
   const onRegisterSubmit = async (data) => {
+    const { password, confirmPassword } = data;
+
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match! Try again");
+      return;
+    }
+
     const result = await authService.register(data);
 
     if (result.status === 409) {
@@ -78,6 +95,18 @@ function App() {
     navigate("/login");
   };
 
+  const onCartAddSubmit = async (data) => {
+    const result = await cartService.addCartItem(data);
+
+    setCartItems((current) => [...current, result]);
+  };
+
+  const onCartDeleteClick = async (id) => {
+    const result = await cartService.deleteCartItemById(id);
+
+    setCartItems((current) => current.filter((x) => x._id !== result._id));
+  };
+
   const authParams = {
     user: user,
     onLoginSubmit: onLoginSubmit,
@@ -96,11 +125,30 @@ function App() {
             <Route path="/" element={<Homepage></Homepage>}></Route>
             <Route
               path="/clothing"
-              element={<ClothingPage clothing={clothing}></ClothingPage>}
+              element={
+                <ClothingPage
+                  clothing={clothing}
+                  onClothingDeleteClick={onClothingDeleteClick}
+                  onCartAddSubmit={onCartAddSubmit}
+                ></ClothingPage>
+              }
             ></Route>
             <Route
               path="/clothing/:id"
-              element={<ClothingDetails></ClothingDetails>}
+              element={
+                <ClothingDetails
+                  onCartAddSubmit={onCartAddSubmit}
+                ></ClothingDetails>
+              }
+            ></Route>
+            <Route
+              path="/cart"
+              element={
+                <CartComponent
+                  cartItems={cartItems}
+                  onCartDeleteClick={onCartDeleteClick}
+                ></CartComponent>
+              }
             ></Route>
             <Route
               path="/create/clothing"

@@ -7,7 +7,7 @@ import "./ClothingDetails.css";
 import CommentsSection from "../CommentsSection/CommentsSection";
 import ClothingItem from "../ClothingItem/ClothingItem";
 
-export default function ClothingDetails() {
+export default function ClothingDetails({ onCartAddSubmit }) {
   const [selectedClothing, setSelectedClothing] = useState({});
   const { id } = useParams();
 
@@ -18,7 +18,10 @@ export default function ClothingDetails() {
   return (
     <div className="item-main-container">
       <div className="clothing-item-container">
-        <ClothingItem {...selectedClothing}></ClothingItem>
+        <ClothingItem
+          {...selectedClothing}
+          onCartAddSubmit={onCartAddSubmit}
+        ></ClothingItem>
       </div>
       <div className="comments-section">
         <CommentsSection></CommentsSection>

@@ -8,9 +8,16 @@ export default function Navigation() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link className="button-link" to={"/"} style={{ color: "black" }}>
-          Nutritional Labs
-        </Link>
+        {user && (
+          <Link className="button-link" to={"/"} style={{ color: "black" }}>
+            Welcome back to Genius-clothing, {user.email}
+          </Link>
+        )}
+        {!user && (
+          <Link className="button-link" to={"/"} style={{ color: "black" }}>
+            Nutritional Labs
+          </Link>
+        )}
         <button
           className="navbar-toggler"
           type="button"
@@ -61,23 +68,26 @@ export default function Navigation() {
               </li>
             )}
 
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+            {user && (
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to={"/cart"}
+                >
+                  Cart
+                </Link>
+              </li>
+            )}
+
+            <li className="nav-item">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to={"./clothing"}
               >
-                Catalog
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to={"/clothing"}>
-                    Clothing
-                  </Link>
-                </li>
-              </ul>
+                Clothing
+              </Link>
             </li>
             {user && user.email === "admin@abv.bg" && (
               <li className="nav-item dropdown">

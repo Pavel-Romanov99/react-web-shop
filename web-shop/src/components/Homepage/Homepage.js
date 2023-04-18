@@ -1,54 +1,64 @@
 import "./Homepage.css";
-
 import { Link } from "react-router-dom";
+
+import nike from "./resources/nike.webp";
+import women from "./resources/women.webp";
+import tommy from "./resources/tommy_sports.jpeg";
 
 export default function Homepage() {
   return (
-    <div id="jumbotron-container">
-      <div className="main-jumbotron">
-        <div className="left-side-main-jumbotron">
-          <h2>Висококачествени хранителни добавки за по-добър живот</h2>
-          <p>
-            Подобри тонуса и визията си с висококачествени добавки, които не
-            само са полезни, но и имат неповторим вкус.
-          </p>
-          <button type="button" class="btn btn-primary">
-            <Link className="button-link" to={"/supplements"}>
-              Виж добавките
-            </Link>
-          </button>
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleIndicators"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block " src={nike} alt="First slide" />
         </div>
-        <div className="right-side-main-jumbotron"></div>
+        <div class="carousel-item ">
+          <img class="d-block " src={women} alt="Second slide" />
+        </div>
+        <div class="carousel-item">
+          <img class="d-block " src={tommy} alt="Third slide" />
+        </div>
       </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
 
-      <div className="row align-items-md-stretch">
-        <div className="col-md-6">
-          <div className="h-100 p-5 text-bg-dark rounded-3">
-            <h2>Change the background</h2>
-            <p>
-              Swap the background-color utility and add a `.text-*` color
-              utility to mix up the jumbotron look. Then, mix and match with
-              additional component themes and more.
-            </p>
-            <button className="btn btn-outline-light" type="button">
-              Example button
-            </button>
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div className="h-100 p-5 bg-body-tertiary border rounded-3">
-            <h2>Add borders</h2>
-            <p>
-              Or, keep it light and add a border for some added definition to
-              the boundaries of your content. Be sure to look under the hood at
-              the source HTML here as we've adjusted the alignment and sizing of
-              both column's content for equal-height.
-            </p>
-            <button className="btn btn-outline-secondary" type="button">
-              Example button
-            </button>
-          </div>
-        </div>
+      <div className="welcome-page">
+        <h1>Welcome to Genius-Clothing</h1>
+        <h3>Browse out new collection</h3>
+        <button type="button" class="btn btn-dark clothing-button">
+          <Link to={"/clothing"} className="clothing-link">
+            View Clothing
+          </Link>
+        </button>
       </div>
     </div>
   );

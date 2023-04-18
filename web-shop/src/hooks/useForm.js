@@ -11,6 +11,11 @@ export const useForm = (data, onSubmitHandler) => {
     e.preventDefault();
 
     onSubmitHandler(values);
+
+    setValues((current) => ({
+      ...current,
+      comment: "",
+    }));
   };
 
   return {

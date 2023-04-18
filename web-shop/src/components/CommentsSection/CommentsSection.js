@@ -53,6 +53,12 @@ export default function CommentsSection() {
             <hr />
           </div>
         ))}
+
+        {comments.length === 0 && (
+          <h3 className="no-comments-header">
+            Be the first one to leave a comment!
+          </h3>
+        )}
       </ul>
 
       {user && (

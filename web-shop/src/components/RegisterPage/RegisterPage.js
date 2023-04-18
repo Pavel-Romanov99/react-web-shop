@@ -1,6 +1,7 @@
 import image from "./resources/register.svg";
 
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
 
@@ -12,6 +13,7 @@ export default function RegisterPage() {
     {
       email: "",
       password: "",
+      confirmPassword: "",
     },
     onRegisterSubmit
   );
@@ -60,6 +62,8 @@ export default function RegisterPage() {
               id="exampleInputPassword2"
               placeholder="Password"
               name="confirmPassword"
+              value={values.confirmPassword}
+              onChange={onChange}
             />
           </div>
           {errorMessage && (
@@ -67,7 +71,10 @@ export default function RegisterPage() {
               {errorMessage}
             </div>
           )}
-          <button type="submit" className="btn btn-primary register-button">
+          <p>
+            Already have a profile? Log in <Link to={"/login"}>here</Link>
+          </p>
+          <button type="submit" className="btn btn-dark">
             Submit
           </button>
         </form>

@@ -7,7 +7,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 30px;
   height: 100%;
   margin-bottom: 6%;
 }
@@ -15,4 +14,8 @@
 .button-link {
   text-decoration: none;
   color: white;
+}
+
+#carouselExampleIndicators {
+  width: 100%;
 }
