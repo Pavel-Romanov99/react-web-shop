@@ -1,15 +1,28 @@
 import image from "./resources/register.svg";
 
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { useForm } from "../../hooks/useForm";
+
 import "./RegisterPage.css";
 
 export default function RegisterPage() {
+  const { onRegisterSubmit, errorMessage } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(
+    {
+      email: "",
+      password: "",
+    },
+    onRegisterSubmit
+  );
+
   return (
     <div className="register-container">
       <div className="register-image-container">
         <img src={image} alt="" />
       </div>
       <div className="register-form-container">
-        <form>
+        <form onSubmit={onSubmit}>
           <h1>Register</h1>
           <div className="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -20,6 +33,8 @@ export default function RegisterPage() {
               aria-describedby="emailHelp"
               placeholder="Enter email"
               name="email"
+              value={values.email}
+              onChange={onChange}
             />
             <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
@@ -33,10 +48,12 @@ export default function RegisterPage() {
               id="exampleInputPassword1"
               placeholder="Password"
               name="password"
+              value={values.password}
+              onChange={onChange}
             />
           </div>
           <div className="form-group">
-            <label for="exampleInputPassword2">Confirm Passowrd</label>
+            <label for="exampleInputPassword2">Confirm Password</label>
             <input
               type="password"
               className="form-control"
@@ -45,6 +62,11 @@ export default function RegisterPage() {
               name="confirmPassword"
             />
           </div>
+          {errorMessage && (
+            <div class="alert alert-danger alert-dismissible " role="alert">
+              {errorMessage}
+            </div>
+          )}
           <button type="submit" className="btn btn-primary register-button">
             Submit
           </button>

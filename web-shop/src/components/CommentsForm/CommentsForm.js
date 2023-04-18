@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 
 import "./CommentsForm.css";
 
-export default function CommentsForm({ commentSubmitHandler }) {
+export default function CommentsForm({ commentSubmitHandler, user }) {
   const { id } = useParams();
 
   const { values, onChange, onSubmit } = useForm(
     {
       comment: "",
       clothing_id: id,
+      user_email: user.email,
     },
     commentSubmitHandler
   );

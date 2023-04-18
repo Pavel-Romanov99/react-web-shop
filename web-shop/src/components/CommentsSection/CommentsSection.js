@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import "./CommentsSection.css";
+import * as commentsService from "../../services/commentsService";
 
 import CommentsForm from "../CommentsForm/CommentsForm";
-import * as commentsService from "../../services/commentsService";
 import CommentItem from "../CommentItem/CommentItem";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function CommentsSection() {
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -46,17 +48,21 @@ export default function CommentsSection() {
               key={x._id}
               {...x}
               onDeleteClick={onDeleteClick}
+              user={user}
             ></CommentItem>
             <hr />
           </div>
         ))}
       </ul>
 
-      <div className="comments-form">
-        <CommentsForm
-          commentSubmitHandler={commentSubmitHandler}
-        ></CommentsForm>
-      </div>
+      {user && (
+        <div className="comments-form">
+          <CommentsForm
+            commentSubmitHandler={commentSubmitHandler}
+            user={user}
+          ></CommentsForm>
+        </div>
+      )}
     </div>
   );
 }

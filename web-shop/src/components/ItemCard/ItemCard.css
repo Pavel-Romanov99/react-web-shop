@@ -33,3 +33,13 @@ img {
 .price {
   color: red;
 }
+
+.btn-link {
+  background-color: #6c63ff;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  border: 1px solid black;
+  color: black;
+}

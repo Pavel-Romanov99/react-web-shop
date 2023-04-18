@@ -1,20 +1,28 @@
 import "./CommentItem.css";
 
-export default function CommentItem({ _id, comment, onDeleteClick }) {
+export default function CommentItem({
+  _id,
+  comment,
+  onDeleteClick,
+  user_email,
+  user,
+}) {
   return (
     <li className="comment-container">
       <div className="comment-info">
-        <h6>Thomas Tuchel commented: </h6>
+        <h6>{user_email} commented: </h6>
         <p>{comment}</p>
       </div>
 
-      <button
-        type="button"
-        class="btn btn-dark delete-comment-button"
-        onClick={() => onDeleteClick(_id)}
-      >
-        Delete Comment
-      </button>
+      {user && user_email === user.email && (
+        <button
+          type="button"
+          class="btn btn-dark delete-comment-button"
+          onClick={() => onDeleteClick(_id)}
+        >
+          Delete Comment
+        </button>
+      )}
     </li>
   );
 }

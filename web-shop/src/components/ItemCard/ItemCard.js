@@ -29,13 +29,13 @@ export default function ItemCard({ imgUrl, title, price, _id }) {
           <option>L</option>
           <option>XL</option>
         </select>
-        <button type="button" class="btn btn-info">
+        <button type="button" class="btn btn-link">
           Add Cart
         </button>
       </div>
       <button
         type="button"
-        class="btn btn-primary details"
+        class="btn btn-dark details"
         onClick={redirectToDetails}
       >
         Details
