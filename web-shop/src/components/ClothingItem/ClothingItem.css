@@ -1,12 +1,16 @@
 .item-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 85%;
   margin-top: 100px;
-  border: 1px solid grey;
   border-radius: 8px;
   padding: 30px;
+}
+
+.clothing-description {
+  margin-top: 20px;
+  text-align: start;
 }
 
 .left-side {
@@ -26,12 +30,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .heading {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 h4 {

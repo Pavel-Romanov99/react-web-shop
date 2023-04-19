@@ -99,6 +99,8 @@ function App() {
     const result = await cartService.addCartItem(data);
 
     setCartItems((current) => [...current, result]);
+
+    setErrorMessage("Successfully added item to cart");
   };
 
   const onCartDeleteClick = async (id) => {
@@ -130,6 +132,7 @@ function App() {
                   clothing={clothing}
                   onClothingDeleteClick={onClothingDeleteClick}
                   onCartAddSubmit={onCartAddSubmit}
+                  errorMessage={errorMessage}
                 ></ClothingPage>
               }
             ></Route>
